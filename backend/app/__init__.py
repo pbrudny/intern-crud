@@ -16,11 +16,14 @@ def create_app(config_name='default'):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
-    
+
     # Initialize extensions with app
     db.init_app(app)
     login_manager.init_app(app)
     migrate.init_app(app, db)
+
+    # Import models to ensure they're registered with SQLAlchemy
+    from app.models import User, StudentProfile
     
     # Configure Flask-Login
     login_manager.login_view = 'auth.login'
