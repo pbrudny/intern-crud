@@ -23,56 +23,56 @@ Based on plan.md, this project uses:
 
 ---
 
-## Phase 1: Setup (Shared Infrastructure)
+## Phase 1: Setup (Shared Infrastructure) ✅ COMPLETE
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create project directory structure per plan.md (backend/app/, backend/migrations/, backend/tests/, backend/uploads/resumes/)
-- [ ] T002 Initialize pyproject.toml with Python 3.14 and Flask dependencies (Flask, SQLAlchemy, Flask-Login, Flask-WTF, Flask-Migrate, WTForms, email-validator, python-dotenv, Werkzeug)
-- [ ] T003 [P] Create .env.example file with required environment variables (SECRET_KEY, DATABASE_URL, FLASK_APP, FLASK_ENV, UPLOAD_FOLDER, MAX_CONTENT_LENGTH)
-- [ ] T004 [P] Create backend/config.py with configuration classes (DevelopmentConfig, ProductionConfig)
-- [ ] T005 [P] Create backend/run.py as application entry point
-- [ ] T006 [P] Create backend/app/__init__.py with Flask app factory pattern
-- [ ] T007 [P] Create backend/app/static/css/style.css for custom styles
-- [ ] T008 [P] Create backend/app/static/js/main.js for custom JavaScript
-- [ ] T009 [P] Create backend/app/templates/base.html with Bootstrap 5 layout and navigation
-- [ ] T010 [P] Create backend/app/templates/index.html for home page
-- [ ] T011 [P] Create backend/app/templates/errors/403.html for forbidden errors
-- [ ] T012 [P] Create backend/app/templates/errors/404.html for not found errors
-- [ ] T013 [P] Create backend/app/templates/errors/500.html for server errors
-- [ ] T014 Run uv sync to install dependencies and create virtual environment
+- [X] T001 Create project directory structure per plan.md (backend/app/, backend/migrations/, backend/tests/, backend/uploads/resumes/)
+- [X] T002 Initialize pyproject.toml with Python 3.14 and Flask dependencies (Flask, SQLAlchemy, Flask-Login, Flask-WTF, Flask-Migrate, WTForms, email-validator, python-dotenv, Werkzeug)
+- [X] T003 [P] Create .env.example file with required environment variables (SECRET_KEY, DATABASE_URL, FLASK_APP, FLASK_ENV, UPLOAD_FOLDER, MAX_CONTENT_LENGTH)
+- [X] T004 [P] Create backend/config.py with configuration classes (DevelopmentConfig, ProductionConfig)
+- [X] T005 [P] Create backend/run.py as application entry point
+- [X] T006 [P] Create backend/app/__init__.py with Flask app factory pattern
+- [X] T007 [P] Create backend/app/static/css/style.css for custom styles
+- [X] T008 [P] Create backend/app/static/js/main.js for custom JavaScript
+- [X] T009 [P] Create backend/app/templates/base.html with Bootstrap 5 layout and navigation
+- [X] T010 [P] Create backend/app/templates/index.html for home page
+- [X] T011 [P] Create backend/app/templates/errors/403.html for forbidden errors
+- [X] T012 [P] Create backend/app/templates/errors/404.html for not found errors
+- [X] T013 [P] Create backend/app/templates/errors/500.html for server errors
+- [X] T014 Run uv sync to install dependencies and create virtual environment
 
 ---
 
-## Phase 2: Foundational (Blocking Prerequisites)
+## Phase 2: Foundational (Blocking Prerequisites) ✅ COMPLETE
 
 **Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T015 Create backend/app/models/__init__.py to initialize SQLAlchemy db instance
-- [ ] T016 [P] Create backend/app/models/user.py with User model (id, email, password_hash, is_admin, created_at)
-- [ ] T017 [P] Create backend/app/models/profile.py with StudentProfile model (all fields from data-model.md)
-- [ ] T018 Initialize Flask-Migrate in backend/app/__init__.py
-- [ ] T019 Run uv run flask db init to create migrations directory
-- [ ] T020 Run uv run flask db migrate -m "Initial migration with User and StudentProfile models"
-- [ ] T021 Run uv run flask db upgrade to apply initial migration
-- [ ] T022 Create backend/app/auth/__init__.py to register authentication blueprint
-- [ ] T023 Create backend/app/auth/forms.py with LoginForm and RegistrationForm (WTForms)
-- [ ] T024 Implement backend/app/auth/routes.py with register route (GET/POST) - includes first user auto-admin logic
-- [ ] T025 Implement login route in backend/app/auth/routes.py (GET/POST) with Flask-Login session management
-- [ ] T026 Implement logout route in backend/app/auth/routes.py (GET)
-- [ ] T027 [P] Create backend/app/auth/templates/login.html with Bootstrap 5 form
-- [ ] T028 [P] Create backend/app/auth/templates/register.html with Bootstrap 5 form
-- [ ] T029 Configure Flask-Login in backend/app/__init__.py with user_loader callback
-- [ ] T030 Create authentication decorator/middleware for @login_required functionality
-- [ ] T031 Create permission checking utilities (is_owner_or_admin) in backend/app/auth/utils.py
+- [X] T015 Create backend/app/models/__init__.py to initialize SQLAlchemy db instance
+- [X] T016 [P] Create backend/app/models/user.py with User model (id, email, password_hash, is_admin, created_at)
+- [X] T017 [P] Create backend/app/models/profile.py with StudentProfile model (all fields from data-model.md)
+- [X] T018 Initialize Flask-Migrate in backend/app/__init__.py
+- [X] T019 Run uv run flask db init to create migrations directory
+- [X] T020 Run uv run flask db migrate -m "Initial migration with User and StudentProfile models"
+- [X] T021 Run uv run flask db upgrade to apply initial migration
+- [X] T022 Create backend/app/auth/__init__.py to register authentication blueprint
+- [X] T023 Create backend/app/auth/forms.py with LoginForm and RegistrationForm (WTForms)
+- [X] T024 Implement backend/app/auth/routes.py with register route (GET/POST) - includes first user auto-admin logic
+- [X] T025 Implement login route in backend/app/auth/routes.py (GET/POST) with Flask-Login session management
+- [X] T026 Implement logout route in backend/app/auth/routes.py (GET)
+- [X] T027 [P] Create backend/app/auth/templates/login.html with Bootstrap 5 form
+- [X] T028 [P] Create backend/app/auth/templates/register.html with Bootstrap 5 form
+- [X] T029 Configure Flask-Login in backend/app/__init__.py with user_loader callback
+- [X] T030 Create authentication decorator/middleware for @login_required functionality
+- [X] T031 Create permission checking utilities (is_owner_or_admin) in backend/app/auth/utils.py
 
-**Checkpoint**: Foundation ready - user story implementation can now begin in parallel
+**Checkpoint**: ✅ Foundation ready - user story implementation can now begin in parallel
 
 ---
 
-## Phase 3: User Story 1 - Student Profile Creation (Priority: P1) 🎯 MVP
+## Phase 3: User Story 1 - Student Profile Creation (Priority: P1) 🎯 MVP ✅ COMPLETE
 
 **Goal**: Students can create their intern profile by filling out a form with personal and academic details
 
@@ -80,17 +80,17 @@ Based on plan.md, this project uses:
 
 ### Implementation for User Story 1
 
-- [ ] T032 Create backend/app/profiles/__init__.py to register profiles blueprint
-- [ ] T033 [US1] Create backend/app/profiles/forms.py with ProfileForm (all fields from data-model.md with validation)
-- [ ] T034 [US1] Implement GET /profiles/create route in backend/app/profiles/routes.py (display form, check user doesn't have profile)
-- [ ] T035 [US1] Implement POST /profiles/create route in backend/app/profiles/routes.py (validate, save profile, handle resume upload)
-- [ ] T036 [US1] Add file upload validation in backend/app/profiles/routes.py (PDF only, max 2MB, sanitize filename)
-- [ ] T037 [US1] Add form field validation in backend/app/profiles/forms.py (index_number alphanumeric min 4 chars, email format, required fields)
-- [ ] T038 [US1] Create backend/app/profiles/templates/create.html with Bootstrap 5 form including file upload
-- [ ] T039 [US1] Add success/error flash messages for profile creation
-- [ ] T040 [US1] Create uploads/resumes/ directory structure with .gitkeep file
+- [X] T032 Create backend/app/profiles/__init__.py to register profiles blueprint
+- [X] T033 [US1] Create backend/app/profiles/forms.py with ProfileForm (all fields from data-model.md with validation)
+- [X] T034 [US1] Implement GET /profiles/create route in backend/app/profiles/routes.py (display form, check user doesn't have profile)
+- [X] T035 [US1] Implement POST /profiles/create route in backend/app/profiles/routes.py (validate, save profile, handle resume upload)
+- [X] T036 [US1] Add file upload validation in backend/app/profiles/routes.py (PDF only, max 2MB, sanitize filename)
+- [X] T037 [US1] Add form field validation in backend/app/profiles/forms.py (index_number alphanumeric min 4 chars, email format, required fields)
+- [X] T038 [US1] Create backend/app/profiles/templates/create.html with Bootstrap 5 form including file upload
+- [X] T039 [US1] Add success/error flash messages for profile creation
+- [X] T040 [US1] Create uploads/resumes/ directory structure with .gitkeep file
 
-**Checkpoint**: At this point, User Story 1 should be fully functional - students can register and create profiles
+**Checkpoint**: ✅ User Story 1 is fully functional - students can register and create profiles - MVP COMPLETE!
 
 ---
 
