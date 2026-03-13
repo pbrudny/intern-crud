@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block title %}Create Profile - Intern CRUD{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow">
+            <div class="card-body p-4">
+                <h2 class="card-title mb-4">
+                    <i class="bi bi-person-plus-fill"></i> Create Your Intern Profile
+                </h2>
+                <p class="text-muted mb-4">
+                    Fill out the form below to create your intern profile. Fields marked with 
+                    <span class="text-danger">*</span> are required.
+                </p>
+                
+                <form method="POST" action="{{ url_for('profiles.create_profile') }}" 
+                      enctype="multipart/form-data" data-loading novalidate>
+                    {{ form.hidden_tag() }}
+                    
+                    <h5 class="border-bottom pb-2 mb-3">Personal Information</h5>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.name.label(class="form-label") }} <span class="text-danger">*</span>
+                            {{ form.name(class="form-control" + (" is-invalid" if form.name.errors else ""), 
+                               placeholder="John Doe") }}
+                            {% if form.name.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.name.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            {{ form.email.label(class="form-label") }} <span class="text-danger">*</span>
+                            {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else ""), 
+                               placeholder="john.doe@university.edu") }}
+                            {% if form.email.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <h5 class="border-bottom pb-2 mb-3 mt-4">Academic Information</h5>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.index_number.label(class="form-label") }} <span class="text-danger">*</span>
+                            {{ form.index_number(class="form-control" + (" is-invalid" if form.index_number.errors else ""), 
+                               placeholder="ABC12345") }}
+                            {% if form.index_number.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.index_number.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% else %}
+                                <small class="form-text text-muted">Alphanumeric, minimum 4 characters</small>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            {{ form.graduation_date.label(class="form-label") }} <span class="text-danger">*</span>
+                            {{ form.graduation_date(class="form-control" + (" is-invalid" if form.graduation_date.errors else "")) }}
+                            {% if form.graduation_date.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.graduation_date.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.institution.label(class="form-label") }} <span class="text-danger">*</span>
+                        {{ form.institution(class="form-control" + (" is-invalid" if form.institution.errors else ""), 
+                           placeholder="University of Example") }}
+                        {% if form.institution.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.institution.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.field_of_study.label(class="form-label") }} <span class="text-danger">*</span>
+                        {{ form.field_of_study(class="form-control" + (" is-invalid" if form.field_of_study.errors else ""), 
+                           placeholder="Computer Science") }}
+                        {% if form.field_of_study.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.field_of_study.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <h5 class="border-bottom pb-2 mb-3 mt-4">Professional Information (Optional)</h5>
+                    
+                    <div class="mb-3">
+                        {{ form.work_experience.label(class="form-label") }}
+                        {{ form.work_experience(class="form-control" + (" is-invalid" if form.work_experience.errors else ""), 
+                           rows=4, placeholder="Describe your work experience...") }}
+                        {% if form.work_experience.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.work_experience.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.projects.label(class="form-label") }}
+                        {{ form.projects(class="form-control" + (" is-invalid" if form.projects.errors else ""), 
+                           rows=4, placeholder="Describe your projects...") }}
+                        {% if form.projects.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.projects.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.linkedin_url.label(class="form-label") }}
+                            {{ form.linkedin_url(class="form-control" + (" is-invalid" if form.linkedin_url.errors else ""), 
+                               placeholder="https://linkedin.com/in/yourprofile") }}
+                            {% if form.linkedin_url.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.linkedin_url.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            {{ form.availability.label(class="form-label") }}
+                            {{ form.availability(class="form-control" + (" is-invalid" if form.availability.errors else ""), 
+                               placeholder="Summer 2026") }}
+                            {% if form.availability.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.availability.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.locations.label(class="form-label") }}
+                        {{ form.locations(class="form-control" + (" is-invalid" if form.locations.errors else ""), 
+                           placeholder="New York, Remote") }}
+                        {% if form.locations.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.locations.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-4">
+                        {{ form.resume.label(class="form-label") }}
+                        {{ form.resume(class="form-control" + (" is-invalid" if form.resume.errors else "")) }}
+                        {% if form.resume.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.resume.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% else %}
+                            <small class="form-text text-muted file-upload-info">
+                                PDF only, maximum 2MB
+                            </small>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        {{ form.submit(class="btn btn-primary btn-lg") }}
+                        <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
