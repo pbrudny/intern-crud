@@ -39,7 +39,7 @@ def register():
 
         return redirect(url_for('index'))
 
-    return render_template('auth/register.html', form=form)
+    return render_template('register.html', form=form)
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -65,7 +65,7 @@ def login():
             return redirect(next_page)
         return redirect(url_for('index'))
 
-    return render_template('auth/login.html', form=form)
+    return render_template('login.html', form=form)
 
 
 @auth.route('/logout')

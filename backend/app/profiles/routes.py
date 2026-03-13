@@ -75,9 +75,19 @@ def delete_resume(filename, user_id):
 @login_required
 def list_profiles():
     """List all student profiles."""
-    # This will be implemented in Phase 4 (User Story 2)
-    flash('Profile listing will be available soon.', 'info')
-    return redirect(url_for('index'))
+    profiles_list = StudentProfile.query.all()
+
+    # Check if current user has a profile
+    user_profile = StudentProfile.query.filter_by(user_id=current_user.id).first()
+
+    # For now, redirect to create profile if user doesn't have one
+    if not user_profile:
+        flash('Welcome! Please create your profile to get started.', 'info')
+        return redirect(url_for('profiles.create_profile'))
+
+    # Otherwise show a simple message (full listing to be implemented later)
+    flash(f'Welcome back! You have a profile. Full profile listing coming soon.', 'info')
+    return redirect(url_for('profiles.view_profile', profile_id=user_profile.id))
 
 
 @profiles.route('/create', methods=['GET', 'POST'])
@@ -98,7 +108,7 @@ def create_profile():
             resume_filename = save_resume(form.resume.data, current_user.id)
             if not resume_filename:
                 flash('Resume upload failed. Please ensure the file is a PDF and under 2MB.', 'danger')
-                return render_template('profiles/create.html', form=form)
+                return render_template('create.html', form=form)
 
         # Create profile
         profile = StudentProfile(
@@ -123,15 +133,13 @@ def create_profile():
         flash('Your profile has been created successfully!', 'success')
         return redirect(url_for('profiles.view_profile', profile_id=profile.id))
 
-    return render_template('profiles/create.html', form=form)
+    return render_template('create.html', form=form)
 
 
 @profiles.route('/<int:profile_id>')
 @login_required
 def view_profile(profile_id):
     """View a student profile."""
-    # This will be implemented in Phase 4 (User Story 2)
     profile = StudentProfile.query.get_or_404(profile_id)
-    flash('Profile viewing will be fully implemented soon.', 'info')
-    return redirect(url_for('index'))
+    return render_template('view.html', profile=profile)
 
