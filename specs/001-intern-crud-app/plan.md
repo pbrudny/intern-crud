@@ -60,7 +60,7 @@ specs/001-intern-crud-app/
 **Structure Decision**: Web application with backend-focused architecture. Since this is a server-rendered web application using Flask templates (not a separate frontend SPA), we use a single backend structure with integrated templates.
 
 ```text
-basic-crud/
+intern-crud/
 ├── backend/
 │   ├── app/
 │   │   ├── __init__.py              # Flask app factory

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Intern CRUD{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold text-primary">
+                <i class="bi bi-person-badge"></i> Intern CRUD
+            </h1>
+            <p class="lead text-muted">Student Intern Profile Management System</p>
+        </div>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-person-plus display-4 text-primary mb-3"></i>
+                        <h5 class="card-title">For Students</h5>
+                        <p class="card-text">Create your intern profile and showcase your skills, education, and experience to potential employers.</p>
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-building display-4 text-success mb-3"></i>
+                        <h5 class="card-title">For Companies</h5>
+                        <p class="card-text">Browse student profiles and find talented interns for your organization.</p>
+                        <a href="{{ url_for('auth.login') }}" class="btn btn-success">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card bg-light">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-info-circle"></i> Features</h5>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-check-circle-fill text-success"></i> Create and manage intern profiles</li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> Upload resumes (PDF format)</li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> Browse available intern candidates</li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> Secure authentication and authorization</li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> Admin management tools</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
