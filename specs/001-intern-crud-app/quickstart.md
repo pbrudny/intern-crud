@@ -19,7 +19,12 @@ This guide helps developers quickly set up and run the intern-crud web applicati
 ### 1. Clone and Navigate
 
 ```bash
-cd /Users/piotrbrudny/pythony/basic-crud
+# Clone the repository
+git clone git@github.com:pbrudny/intern-crud.git
+cd intern-crud
+
+# Or if already cloned, navigate to it
+cd /Users/piotrbrudny/pythony/intern-crud
 ```
 
 ### 2. Install Dependencies with UV
@@ -123,7 +128,7 @@ As the first user (admin), you can:
 ## Project Structure
 
 ```
-basic-crud/
+intern-crud/
 ├── backend/
 │   ├── app/
 │   │   ├── __init__.py          # Flask app factory

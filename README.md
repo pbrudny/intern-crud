@@ -40,7 +40,8 @@ The intern-crud application allows students to create and manage their intern pr
 
 ```bash
 # Clone the repository
-cd /path/to/basic-crud
+git clone git@github.com:pbrudny/intern-crud.git
+cd intern-crud
 
 # Install dependencies (UV automatically creates venv)
 uv sync
@@ -86,7 +87,7 @@ uv add --dev package-name  # Dev dependencies
 ## Project Structure
 
 ```
-basic-crud/
+intern-crud/
 ├── backend/
 │   ├── app/
 │   │   ├── models/          # SQLAlchemy models
