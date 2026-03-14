@@ -1,6 +1,6 @@
 # Intern CRUD - Student Intern Profile Management System
 
-A web-based CRUD application for managing student intern profiles, built with Python 3.14 and Flask.
+A web-based CRUD application for managing student intern profiles, built with Python 3.10+ and Flask.
 
 ## Overview
 
@@ -18,9 +18,9 @@ The intern-crud application allows students to create and manage their intern pr
 
 ## Tech Stack
 
-- **Language**: Python 3.14
+- **Language**: Python 3.10+
 - **Framework**: Flask
-- **Database**: SQLite (development), PostgreSQL (production)
+- **Database**: SQLite (development), PostgreSQL (production ready)
 - **ORM**: SQLAlchemy
 - **Authentication**: Flask-Login
 - **Forms**: WTForms + Flask-WTF
@@ -28,12 +28,14 @@ The intern-crud application allows students to create and manage their intern pr
 - **CSS**: Bootstrap 5
 - **Testing**: pytest
 - **Package Manager**: UV (modern, fast Python package manager)
+- **Production Server**: Gunicorn
+- **Deployment**: Docker + Coolify ready
 
 ## Quick Start
 
 ### Prerequisites
 
-- Python 3.14
+- Python 3.10 or higher
 - UV package manager: `curl -LsSf https://astral.sh/uv/install.sh | sh`
 
 ### Setup (2 minutes)
@@ -60,6 +62,29 @@ uv run flask run
 ```
 
 Visit `http://localhost:5000`
+
+## Deployment
+
+### Deploy to Mikrus VPS (Recommended - Budget-Friendly)
+
+**📖 Quick Start: [QUICKSTART-MIKRUS.md](QUICKSTART-MIKRUS.md)**
+**📚 Full Guide: [DEPLOYMENT-MIKRUS.md](DEPLOYMENT-MIKRUS.md)**
+
+**One-Command Deploy**:
+```bash
+# SSH to your Mikrus VPS, then run:
+curl -sSL https://raw.githubusercontent.com/pbrudny/intern-crud/main/deploy-mikrus.sh | bash
+```
+
+**Features**:
+- ✅ IPv6-mostly architecture (Mikrus specialty)
+- ✅ **Cloudflare Tunnel support** (no port exposure needed!)
+- ✅ Free HTTPS subdomain (e.g., `yourapp.m.mikr.us`)
+- ✅ Custom domain support via Cloudflare
+- ✅ Cost: ~35-99 PLN/year (~$10-25/year)
+- ✅ Automated deployment script
+- ✅ Systemd service with auto-restart
+- ✅ Works with shared IPv4 addressing
 
 ## Development
 
