@@ -1,6 +1,6 @@
 # Intern CRUD - Student Intern Profile Management System
 
-A web-based CRUD application for managing student intern profiles, built with Python 3.14 and Flask.
+A web-based CRUD application for managing student intern profiles, built with Python 3.10+ and Flask.
 
 ## Overview
 
@@ -18,9 +18,9 @@ The intern-crud application allows students to create and manage their intern pr
 
 ## Tech Stack
 
-- **Language**: Python 3.14
+- **Language**: Python 3.10+
 - **Framework**: Flask
-- **Database**: SQLite (development), PostgreSQL (production)
+- **Database**: SQLite (development), PostgreSQL (production ready)
 - **ORM**: SQLAlchemy
 - **Authentication**: Flask-Login
 - **Forms**: WTForms + Flask-WTF
@@ -28,12 +28,14 @@ The intern-crud application allows students to create and manage their intern pr
 - **CSS**: Bootstrap 5
 - **Testing**: pytest
 - **Package Manager**: UV (modern, fast Python package manager)
+- **Production Server**: Gunicorn
+- **Deployment**: Docker + Coolify ready
 
 ## Quick Start
 
 ### Prerequisites
 
-- Python 3.14
+- Python 3.10 or higher
 - UV package manager: `curl -LsSf https://astral.sh/uv/install.sh | sh`
 
 ### Setup (2 minutes)
@@ -60,6 +62,31 @@ uv run flask run
 ```
 
 Visit `http://localhost:5000`
+
+## Deployment
+
+### Deploy to Coolify (VPS)
+
+See **[DEPLOYMENT.md](DEPLOYMENT.md)** for complete Coolify deployment guide.
+
+**Quick Deploy**:
+1. Push code to GitHub
+2. Create new project in Coolify
+3. Add repository (auto-detects Dockerfile)
+4. Set environment variables (see `.env.production.example`)
+5. Configure volumes for database and uploads
+6. Deploy! 🚀
+
+**Test Docker locally**:
+```bash
+./test-docker.sh
+```
+
+Or with docker-compose:
+```bash
+docker-compose up -d
+docker-compose logs -f
+```
 
 ## Development
 

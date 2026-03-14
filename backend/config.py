@@ -34,22 +34,36 @@ class DevelopmentConfig(Config):
 
 class ProductionConfig(Config):
     """Production configuration."""
-    
+
     DEBUG = False
+    # Support both DATABASE_URL formats (with and without sqlite:///)
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        f'sqlite:///{basedir / "intern_crud.db"}'
-    
+        f'sqlite:///{basedir / "backend" / "instance" / "intern_crud.db"}'
+
+    # Trust proxy headers (for Coolify reverse proxy)
+    PREFERRED_URL_SCHEME = 'https'
+
     @classmethod
     def init_app(cls, app):
         """Initialize production app."""
         Config.init_app(app)
-        
-        # Log to stderr in production
+
+        # Ensure instance directory exists
+        instance_path = basedir / "backend" / "instance"
+        instance_path.mkdir(parents=True, exist_ok=True)
+
+        # Log to stdout/stderr in production (for Docker/Coolify)
         import logging
         from logging import StreamHandler
-        file_handler = StreamHandler()
-        file_handler.setLevel(logging.INFO)
-        app.logger.addHandler(file_handler)
+        stream_handler = StreamHandler()
+        stream_handler.setLevel(logging.INFO)
+        formatter = logging.Formatter(
+            '[%(asctime)s] %(levelname)s in %(module)s: %(message)s'
+        )
+        stream_handler.setFormatter(formatter)
+        app.logger.addHandler(stream_handler)
+        app.logger.setLevel(logging.INFO)
+        app.logger.info('Intern CRUD application startup')
 
 
 config = {
